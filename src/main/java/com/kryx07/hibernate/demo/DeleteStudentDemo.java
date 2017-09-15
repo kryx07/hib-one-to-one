@@ -22,15 +22,19 @@ public class DeleteStudentDemo {
 
         try {
 
-            int studentId = 4;
+            int studentId = 5;
             session = factory.getCurrentSession();
             session.beginTransaction();
 
-            System.out.println("Getting student with id: " + studentId);
+//            System.out.println("Getting student with id: " + studentId);
 
-            Student student = session.get(Student.class, studentId);
+            /*Student student = session.get(Student.class, studentId);
 
-            session.delete(student);
+
+
+            session.delete(student);*/
+
+            session.createQuery("delete Student where id=" + studentId).executeUpdate();
 
             session.getTransaction().commit();
 
