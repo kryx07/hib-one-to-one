@@ -1,6 +1,7 @@
 lib/
 .idea/
 target/
+out/
 *.iml
 *.vcs
 
