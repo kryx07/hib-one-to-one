@@ -1,38 +1,43 @@
 package com.kryx07.hibernate.demo;
 
-import com.kryx07.hibernate.demo.entity.Student;
+import com.kryx07.hibernate.demo.entity.Instructor;
+import com.kryx07.hibernate.demo.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class PrimaryKeyDemo {
+
+public class DeleteDemo {
 
     public static void main(String[] args) {
 
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(Instructor.class)
+                .addAnnotatedClass(InstructorDetail.class)
                 .buildSessionFactory();
 
         Session session = factory.getCurrentSession();
 
         try {
 
-            Student student1 = new Student("John", "Doe", "John@dupa.com");
-            Student student2 = new Student("Mary", "Public", "Mary@dupa.com");
-            Student student3 = new Student("Bonita", "Applebaum", "bonita@dupa.com");
+            //Instructor instructor = new Instructor("Chad", "Darby", "email@email.com");
+
 
             session.beginTransaction();
 
-            session.save(student1);
-            session.save(student2);
-            session.save(student3);
+            int id = 1;
+
+            Instructor instructor = session.get(Instructor.class, id);
+
+            if (instructor != null) {
+                session.delete(instructor);
+            }
 
             session.getTransaction().commit();
 
             System.out.println("Done");
-        }
-        finally {
+        } finally {
             session.close();
         }
     }
