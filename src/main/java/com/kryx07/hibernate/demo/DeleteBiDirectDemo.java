@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 
-public class CreateBiDirectDemo {
+public class DeleteBiDirectDemo {
 
     public static void main(String[] args) {
 
@@ -37,6 +37,8 @@ public class CreateBiDirectDemo {
 
             System.out.println(instructorDetail.getInstructor());
 
+
+            session.delete(instructorDetail);
 //            session.save(instructor);
 
 
