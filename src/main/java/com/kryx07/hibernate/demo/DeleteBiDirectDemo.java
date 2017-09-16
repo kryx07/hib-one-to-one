@@ -30,13 +30,14 @@ public class DeleteBiDirectDemo {
 
             session.beginTransaction();
 
-            int id = 2;
+            int id = 3;
 
-            InstructorDetail instructorDetail = session.get(InstructorDetail.class,id);
+            InstructorDetail instructorDetail = session.get(InstructorDetail.class, id);
             System.out.println(instructorDetail);
 
             System.out.println(instructorDetail.getInstructor());
 
+            instructorDetail.getInstructor().setInstructorDetail(null);
 
             session.delete(instructorDetail);
 //            session.save(instructor);
